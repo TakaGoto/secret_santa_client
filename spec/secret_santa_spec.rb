@@ -16,5 +16,14 @@ describe SecretSanta do
         expect(person[:name]).to_not eq(person[:pair])
       end
     end
+
+    it "blacklists pairs of people" do
+      people = {
+        :taka => "taka@gmail.com",
+        :emmanuel => "emmanuel@gmail.com",
+      }
+
+      expect(SecretSanta.pair(people, {:taka => :emmanuel})).to eq([])
+    end
   end
 end

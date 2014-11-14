@@ -1,11 +1,16 @@
 class SecretSanta
-  def self.pair(list)
+  def self.pair(list, blacklist = {})
     name_list = list.keys
     name_list.shuffle!
 
     name_list.each.with_index.reduce([]) do |paired_list, (name, index)|
       pairs = assign_pair(index, name_list)
-      paired_list << {:name => name, :email => list[name], :pair => pairs[name]}
+
+      if blacklist[name] != pairs[name]
+        paired_list << {:name => name, :email => list[name], :pair => pairs[name]}
+      else
+        []
+      end
     end
   end
 
