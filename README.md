@@ -1,4 +1,4 @@
-secret_santa
+Secret Santa Client
 ============
 
 ## About
