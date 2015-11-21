@@ -36,6 +36,9 @@ secret_santa = Mobile::SecretSanta.new(:list => list, :logger => logger, :twilio
 
 secret_santa.pair_list.send
 
+the text will look something like this:
+  Yo Secret Santa, give this whiny little kid #{person} a gift, because we all know #{person} was a bad person this year and will be getting coal from the real Santa.
+
 ```
 
 ## Logging
