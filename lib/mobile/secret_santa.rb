@@ -59,7 +59,7 @@ module Mobile
     end
 
     def default_text_body(person)
-      "Yo Secret Santa, give this whiny little kid #{person} a gift, because we all know #{person} was a bad person this year and will be getting coal from the real Santa. Sincerly, The Cool Tak's Secret Santa #{Time.now.year}."
+      "Yo Secret Santa, give this whiny little kid #{person} a gift, because we all know #{person} was a bad person this year and will be getting coal from the real Santa."
     end
   end
 end
