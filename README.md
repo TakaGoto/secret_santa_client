@@ -3,7 +3,7 @@ secret_santa
 
 ## About
 
-Use this to randomly generator pairing of people for Secret Santa.
+Use this to randomly generator pairing of people for Secret Santa and send texts.
 
 ## Usage
 
