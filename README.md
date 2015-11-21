@@ -47,6 +47,14 @@ Logging is optional, but in case something goes wrong, for example someone didn'
 1. Twilio Integration
 2. Logging
 
+## Text Body
+
+You can pass in a block if you don't want to use the default text body
+
+```
+secret_santa.pair_list.send(:text_body => Proc.new {|person| "hello #{person}."})
+```
+
 ## Future Features
 
 1. Resend email by phone number by looking through logs
