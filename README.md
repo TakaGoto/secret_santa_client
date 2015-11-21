@@ -58,6 +58,11 @@ You can pass in a block if you don't want to use the default text body
 secret_santa.pair_list.send(:text_body => Proc.new {|person| "hello #{person}."})
 ```
 
+## Testing
+
+1. `bundle install`
+2. `rspec`
+
 ## Future Features
 
 1. Resend email by phone number by looking through logs
