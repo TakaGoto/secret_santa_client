@@ -17,8 +17,8 @@ describe Mobile::SecretSanta do
 
       expect(results.length).to eq(4)
 
-      names = ["taka", "dave", "eric", "joe"]
-      numbers = ["123-123-1234", "321-321-4321", "098-098-0987", "456-456-4567"]
+      names = list.keys
+      numbers = list.values
 
       results.each do |result|
         expect(numbers).to include(result[:santa][:number])

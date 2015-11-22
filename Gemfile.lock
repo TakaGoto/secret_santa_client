@@ -5,6 +5,7 @@ GEM
     diff-lcs (1.2.5)
     jwt (1.4.0)
     multi_json (1.11.0)
+    rake (10.4.2)
     rspec (3.1.0)
       rspec-core (~> 3.1.0)
       rspec-expectations (~> 3.1.0)
@@ -26,8 +27,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  rake (~> 10.4, >= 10.4.2)
   rspec (~> 3.1.0)
   twilio-ruby (~> 4.6)
-
-BUNDLED WITH
-   1.10.6
