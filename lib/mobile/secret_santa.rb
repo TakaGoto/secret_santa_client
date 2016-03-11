@@ -1,4 +1,4 @@
-require 'mobile/noop_logger'
+require_relative 'noop_logger'
 require 'logger'
 require 'json'
 require 'digest'
@@ -40,7 +40,7 @@ module Mobile
       @logger.info(@pairs.to_json)
     end
 
-    def resend_text(name, file_name, text_body)
+    def resend_text(name, file_name, text_body=nil)
       log_file = IO.readlines(file_name)
       name_pairs = JSON.parse(log_file[1].split(" : ")[1])
       name_pair = name_pairs.find { |pair| pair["santa"]["name"] == name }
