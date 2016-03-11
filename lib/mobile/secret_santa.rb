@@ -1,3 +1,4 @@
+require 'mobile/noop_logger'
 require 'logger'
 require 'json'
 require 'digest'
@@ -28,17 +29,25 @@ module Mobile
     end
 
     def send(options = {})
-      pairs = @pairs.clone
-      pairs.each { |pair| pair[:santa][:name] = Digest::SHA256.hexdigest(pair[:santa][:name]) }
-      @logger.info(pairs.to_json)
-
-      pairs.each { |pair|
+      @pairs.each { |pair|
         @twilio_client
           .account
           .messages
           .create(payload(pair[:santa][:number], pair[:person], options[:text_body]))
       }
+
+      @pairs.each { |pair| pair[:person] = Digest::SHA256.hexdigest(pair[:person]) }
+      @logger.info(@pairs.to_json)
     end
+
+    def resend_text(name, file_name, text_body)
+      log_file = IO.readlines(file_name)
+      name_pairs = JSON.parse(log_file[1].split(" : ")[1])
+      name_pair = name_pairs.find { |pair| pair["santa"]["name"] == name }
+      person = names.find {|name| name_pair["person"] == Digest::SHA256.hexdigest(name)}
+      @twilio_client.account.messages.create(payload(name_pair["santa"]["number"], person, text_body))
+    end
+
 
     def names
       @names ||= @list.keys
@@ -62,9 +71,4 @@ module Mobile
       "Yo Secret Santa, give this whiny little kid #{person} a gift, because we all know #{person} was a bad person this year and will be getting coal from the real Santa."
     end
   end
-end
-
-class NoopLogger
-  def initialize; end
-  def info(body); end
 end
